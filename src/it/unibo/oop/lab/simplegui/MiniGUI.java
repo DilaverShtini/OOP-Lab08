@@ -43,6 +43,11 @@ public class MiniGUI {
         final JButton write = new JButton("Print a random number on standard output");
         panel.add(write);
         /*
+         * ex 1.02
+         */
+        final JTextField txt = new JTextField("Result"); 
+        frame.add(txt, BorderLayout.NORTH);
+        /*
          * Handlers
          */
         write.addActionListener(new ActionListener() {
