@@ -51,9 +51,14 @@ public class MiniGUI {
          * Handlers
          */
         write.addActionListener(new ActionListener() {
+            /*
+             * ex 1.03
+             */
             @Override
             public void actionPerformed(final ActionEvent e) {
-                System.out.println(rng.nextInt());
+                final int result = rng.nextInt();
+                System.out.println(result);
+                txt.setText(Integer.toString(result));
             }
         });
     }
