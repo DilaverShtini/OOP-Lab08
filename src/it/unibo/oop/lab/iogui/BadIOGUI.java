@@ -49,7 +49,18 @@ public class BadIOGUI {
        panel.setLayout(new BoxLayout(panel, BoxLayout.LINE_AXIS));
        frame.setContentPane(panel);
        panel.add(write);
-        /*
+       /*
+        * ex 1.02
+        */
+       final JButton read = new JButton("Read");
+       panel.add(read);
+       read.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(final ActionEvent e) {
+               System.out.println("Pressed the button \"Read\"");
+           }
+       });
+           /*
          * Handlers
          */
         write.addActionListener(new ActionListener() {
