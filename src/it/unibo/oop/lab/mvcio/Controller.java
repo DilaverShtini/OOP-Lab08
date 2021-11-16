@@ -1,6 +1,9 @@
 package it.unibo.oop.lab.mvcio;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintStream;
 
 /**
  * 
@@ -47,6 +50,17 @@ public class Controller {
     /* 4) A method that gets a String as input and saves its content on the current
      * file. This method may throw an IOException.
      */
+    /**
+     * @param fileIN
+     * @exception IOException
+    */
+    public final void saveFile(final String fileIN) throws IOException {
+        try (PrintStream ps = new PrintStream(file)) {
+            ps.print(fileIN);
+        } catch (FileNotFoundException e) {
+            System.out.println("Error > " + e.toString());
+        }
+    }
     /* 5) By default, the current file is "output.txt" inside the user home folder.
      * A String representing the local user home folder can be accessed using
      * System.getProperty("user.home"). The separator symbol (/ on *nix, \ on
