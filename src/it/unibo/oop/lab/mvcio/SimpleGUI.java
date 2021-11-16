@@ -1,9 +1,16 @@
 package it.unibo.oop.lab.mvcio;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 /**
  * A very simple program using a graphical interface.
@@ -17,8 +24,12 @@ public final class SimpleGUI {
      * Once the Controller is done, implement this class in such a way that:
      * 
      * 1) It has a main method that starts the graphical application
-     * 
-     * 2) In its constructor, sets up the whole view
+     */
+    public static void main(final String... args) {
+        SimpleGUI simpleGui = new SimpleGUI(new Controller());
+        simpleGui.display();
+    }
+    /* 2) In its constructor, sets up the whole view
      * 
      * 3) The graphical interface consists of a JTextArea with a button "Save" right
      * below (see "ex02.png" for the expected result). SUGGESTION: Use a JPanel with
@@ -35,8 +46,9 @@ public final class SimpleGUI {
 
     /**
      * builds a new {@link SimpleGUI}.
+     * @param controller
      */
-    public SimpleGUI() {
+    public SimpleGUI(final Controller controller) {
         /*
          * Make the frame half the resolution of the screen. This very method is
          * enough for a single screen setup. In case of multiple monitors, the
@@ -57,6 +69,30 @@ public final class SimpleGUI {
          * on screen. Results may vary, but it is generally the best choice.
          */
         frame.setLocationByPlatform(true);
+        final JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        frame.setContentPane(panel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        final JTextArea textArea = new JTextArea();
+        final JButton saveButton = new JButton("Save");
+        panel.add(textArea, BorderLayout.CENTER);
+        panel.add(saveButton, BorderLayout.SOUTH);
+        frame.setContentPane(panel);
+        saveButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                try {
+                    controller.setCurrentFile();
+                    controller.saveFile(textArea.getText());
+                } catch (IOException e1) {
+                    System.out.println(e1.toString());
+                }
+            }
+        });
+    }
+    private void display() {
+        frame.setVisible(true);
     }
 
 }
