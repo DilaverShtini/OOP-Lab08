@@ -38,6 +38,12 @@ public class Controller {
     }
     /* 3) A method for getting the path (in form of String) of the current File
      */
+    /**
+     * @return the path of current file 
+     */
+    public final String getPath() {
+        return this.file.getPath();
+    }
     /* 4) A method that gets a String as input and saves its content on the current
      * file. This method may throw an IOException.
      */
