@@ -30,6 +30,12 @@ public class Controller {
     }
     /* 2) A method for getting the current File
      */
+    /**
+     *@return current file
+     */
+    public final File getFile() {
+        return this.file; 
+    }
     /* 3) A method for getting the path (in form of String) of the current File
      */
     /* 4) A method that gets a String as input and saves its content on the current
