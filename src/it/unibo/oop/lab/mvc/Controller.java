@@ -17,7 +17,7 @@ public interface Controller {
      * 1) A method for setting the next string to print. Null values are not
      * acceptable, and an exception should be produced
      */ 
-    void setNextString(); 
+    void setNextString(String string); 
     /* 2) A method for getting the next string to print
      */ 
     String getNextString();
